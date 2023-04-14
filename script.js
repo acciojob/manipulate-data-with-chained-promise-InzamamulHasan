@@ -4,21 +4,17 @@ function prom1(){
 	return new Promise((resolve,reject)=>{
 		setTimeout(()=>{
 			let ans=arr.filter((el)=>{
-				return el%2==1;
+				return el%2==0;
 			})
 			resolve(ans);
 		},1000)
 	})
 }	
-function prom2(){
+function prom2(arr){
 	return new Promise((resolve,reject)=>{
 		setTimeout(()=>{
 			let ans=arr.map((el)=>{
-				if(el%2==0){
 					return el*2;
-				}else{
-					return el;
-				}
 			})
 			resolve(ans);
 		},2000)
@@ -26,7 +22,7 @@ function prom2(){
 }
 prom1().then((data)=>{
 	document.querySelector("#output").textContent=data;
-	return prom2();
+	return prom2(data);
 }).then((el)=>{
 	document.querySelector("#output").textContent=el;
 }).catch((err)=>{
